@@ -1,0 +1,138 @@
+header h1 {
+    color: white;
+    text-align: center;
+}
+
+header {
+    background-color: rgb(76, 74, 225);
+    height: 60px;
+}
+
+footer p {
+    text-align: center;
+    padding-top: 6px;
+    color: white;
+}
+
+footer {
+    margin-top: 20px;
+    background-color: rgb(76, 74, 225);
+    height: 40px;
+}
+
+h3 {
+    text-align: center;
+    color: blue;
+    font-weight: 700;
+}
+
+
+
+hr {
+    margin-top: 0;
+}
+
+.task-button {
+    text-align: center;
+}
+
+
+
+.form-2 ul {
+    list-style-type: none;
+}
+
+.form {
+    text-align: center;
+}
+
+.field-priority {
+    margin-top: -20px;
+}
+
+.field-priority-label{
+    margin-left: -160px;
+}
+
+
+.tasks-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tasks-to-do {
+    background-color: rgb(244, 244, 244);
+    word-break: break-all;
+    width: 500px;
+    border: solid rgb(53, 52, 52);
+    border-radius: 0.5px;   
+}
+
+.tasks-to-do td, .tasks-done td {
+    padding: 10px 8px;
+}
+
+
+td {
+    font-size: large;
+}
+
+.tasks-done {
+    margin-left: 100px;
+    background-color: rgb(244, 244, 244);
+    width: 500px;
+    word-break: break-all;
+    border: solid rgb(53, 52, 52);
+    border-radius: 4px;
+}
+
+.main-h3 {
+    margin-top: 30px;
+}
+
+h5 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.graph {
+    width: 800px;
+    height: 400px;
+    margin: auto;
+}
+
+.delete {
+    background-color: red;
+}
+
+a {
+    text-decoration: none;
+}
+
+.tasks-status {
+    margin-bottom: 30px;
+}
+
+.tasks-status h5 {
+    margin-top: 10px;
+}
+
+td {
+    font-weight: 700;
+    margin-left: 100px;
+}
+
+.field-priority, .field-task, .field-task-label, .field-priority-label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.field-priority {
+    margin-left: 30px;
+    margin-top: -24px;
+}
+
+.field-task {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %} {{mess}}
+
+<h3 class="main-h3">Создать задачу</h3>
+<hr />
+<div class="form">
+  <form method="POST">
+    {{form.csrf_token}}
+    <div class="form-1">
+      {{form.task.label(class_ = 'field-task-label')}}
+      <div>{{form.task(class_ = 'field-task')}}</div>
+    </div>
+    <div class="form-2">
+      {{form.priority.label(class_ = 'field-priority-label')}}:
+      {{form.priority(class_ = 'field-priority' )}}
+    </div>
+    <div class="task-button">
+      <button type="submit" class="btn btn-primary">Создать</button>
+    </div>
+  </form>
+</div>
+<hr />
+<h3 class="main-h3">Созданные задачи</h3>
+<hr />
+<div class="tasks-status">
+  <div class="tasks-to-do">
+    <h5>В работе:</h5>
+    <hr>
+    {% if tasks_toDo %} {% for task in tasks_toDo%}
+    
+    <table>
+      <tr>
+       <td>{{task.task}} 
+        <a href="{{url_for('edit', id=task['id']) }}"><span>&#10004;</span>| </a> 
+        <a href="{{ url_for('delete', id=task['id']) }}"><span class = 'delete'>&#10006;</span></a>
+      </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+
+  <div class="tasks-done">
+    <h5>Выполнено:</h5>
+    <hr>
+    {% if tasks_done %}
+    <table>
+      {% for task in tasks_done%}
+      <tr>
+        <td>{{task.task}}
+        <a href="{{ url_for('delete', id=task['id']) }}"><span class = 'delete'>&#10006;</span></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+</div>
+
+<hr />
+<h3 class="main-h3">Аналитика выполнения задач</h3>
+<hr />
+
+<div class="graph">{% autoescape off %} {{fig}} {% endautoescape %}</div>
+
+{% endblock content%}
