@@ -4,8 +4,8 @@
 
 3. How to run project:
 1) Create your folder
-2) Inside of this folder run command: git clone https://github.com/Lisger10/Tasks_planner.git «\»
-3) Create virtual env: python -m venv .venv «\»
-4) Activate it - .venv\Scripts\activate or (	source /path/to/venv/bin/activate) «\»
-5) Install requirements inside ...\Tasks_planner: pip install -r requirements.txt «\»
+2) Inside of this folder run command: git clone https://github.com/Lisger10/Tasks_planner.git 
+3) Create virtual env: python -m venv .venv 
+4) Activate it - .venv\Scripts\activate or (	source /path/to/venv/bin/activate) 
+5) Install requirements inside ...\Tasks_planner: pip install -r requirements.txt 
 6) Run project: flask --app hello run
