@@ -39,6 +39,17 @@ class Task(db.Model):
 with app.app_context():
     db.create_all()
 
+
+def tasks_status():
+    tasks_toDo = Task.query.filter(Task.status =='toDo')
+    tasks_done = Task.query.filter(Task.status == 'done')
+    return tasks_toDo, tasks_done
+
+def tasks_amount():
+    tasks_toDo_count = Task.query.filter(Task.status =='toDo').count()
+    tasks_done_count = Task.query.filter(Task.status == 'done').count()
+    return tasks_toDo_count, tasks_done_count
+
 @app.route('/', methods = ['GET', 'POST'])
 def main_page():
     form = CreateTaskForm(request.form)
@@ -47,24 +58,20 @@ def main_page():
         task = Task(task = form.task.data, date=today, priority=form.priority.data, status = 'toDo' )
         db.session.add(task)
         db.session.commit()
-        tasks_toDo = Task.query.filter(Task.status =='toDo')
-        tasks_done = Task.query.filter(Task.status == 'done')
-        tasks_toDo_count = Task.query.filter(Task.status =='toDo').count()
-        tasks_done_count = Task.query.filter(Task.status == 'done').count()
+        tasks_toDo, tasks_done = tasks_status()
+        tasks_toDo_count, tasks_done_count = tasks_amount()
         fig = addGraph(tasks_toDo_count,tasks_done_count)
         return render_template('main.html', form = form, task= task, fig=fig, tasks_toDo = tasks_toDo, tasks_done=tasks_done,
                                  tasks_toDo_count= tasks_toDo_count,
                                  tasks_done_count= tasks_done_count )
 
     else:
-        tasks_toDo = Task.query.filter(Task.status =='toDo')
-        tasks_done = Task.query.filter(Task.status == 'done')
-        tasks_toDo_count = Task.query.filter(Task.status =='toDo').count()
-        tasks_done_count = Task.query.filter(Task.status == 'done').count()
+        tasks_toDo, tasks_done = tasks_status()
+        tasks_toDo_count, tasks_done_count = tasks_amount()
         fig = addGraph(tasks_toDo_count,tasks_done_count)
         return render_template('main.html', form=form, fig=fig, tasks_toDo = tasks_toDo, tasks_done=tasks_done, 
                                  tasks_toDo_count= tasks_toDo_count,
-                                 tasks_done_count= tasks_done_count )
+                                 tasks_done_count= tasks_done_count)
 
 
 @app.route('/delete/<int:id>')
